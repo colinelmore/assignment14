@@ -6,6 +6,8 @@ const app = express();
 
 const joi = require("joi");
 
+//const multer = require("multer");
+
 app.use(express.static("public"));
 
 app.use(express.json());

@@ -55,12 +55,21 @@ const displayDetails = (food) => {
     foodDetails.append(p);
     p.innerHTML = food.description;
 
+    const p2 = document.createElement("p");
+    foodDetails.append(p2);
+    p2.innerHTML = food.review;
+
+    const p3 = document.createElement("p");
+    foodDetails.append(p3);
+    p3.innerHTML = food.rating;
+
+
     const ul = document.createElement("ul");
     foodDetails.append("ul");
-    food.rating.forEach((rating) => {
+    food.condiments.forEach((condiment) => {
         const li = document.createElement("li");
         ul.append(li);
-        li.innerHTML = rating;
+        li.innerHTML = condiment;
     })
 
 elink.onclick = (e) => {
