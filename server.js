@@ -15,9 +15,9 @@ app.get("/", (req, res) => {
 });
 
 let foods = [
-    {id:1 , name:"Hot Dog", description: "Weiner on a bun", review:"Super yummy!", rating: "5/10", condiments: [chili, cheese, mayo]},
-    {id:2, name:"Hamburger", description:"Patty with condiments in a bun", review:"Wack!", rating: "8/10", condiments: [cheese, mayo, mustard]},
-    {id:3, name:"Pizza", description:"Bread with melted cheese", review:"So delicious!", rating: "9/10", condiments: [cheese, sausage, olives]}
+    {id:1 , name:"Hot Dog", description: "Weiner on a bun", review:"Super yummy!", rating: "5/10", condiments:["chili", "cheese", "mayo"],},
+    {id:2, name:"Hamburger", description:"Patty with condiments in a bun", review:"Wack!", rating: "8/10", condiments:["cheese", "mayo", "mustard"],},
+    {id:3, name:"Pizza", description:"Bread with melted cheese", review:"So delicious!", rating: "9/10", condiments:["cheese", "sausage", "olives"],}
 ]
 
 app.get("/api/foods", (req, res) => {

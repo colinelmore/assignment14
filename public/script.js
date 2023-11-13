@@ -76,7 +76,42 @@ const populateEditForm = (food) => {};
 
 const addEditFood = async (e) => {
     e.preventDefault();
-}
+
+    const form = document.getElementById("add-edit-food-form");
+    const formData = new FormData(form);
+    formData.append("Condiments", getCond());
+
+    let response;
+
+    if(form.id.value == -1){
+        formData.delete("id");
+        
+        response = await fetch("/api/foods", {
+            method:"POST",
+            body: formData,
+        });
+    }
+
+
+    if(response.status != 200) {
+        console.log("Error");
+        return;
+    }
+
+    document.querySelector(".dialog").classList.add("transparent");
+    resetForm();
+    showFoods();
+}; 
+
+const getCond = () => {
+    const inputs = document.querySelectorAll("#cond-boxes input");
+    const condiments = [];
+
+    inputs.forEach((input)=>{
+        condiments.push(input.value);
+    });
+    return condiments;
+};
 
 const resetForm = () => {
     const form = document.getElementById("add-edit-food-form");
@@ -91,6 +126,14 @@ const showHideAdd = (e) => {
     document.getElementById("add-edit-title").innerHTML = "Add Food";
 }
 
+const addCondiment = (e) => {
+    e.preventDefault();
+    const condBoxes = document.getElementById("cond-boxes");
+    const input = document.createElement("input");
+    input.type = "text";
+    condBoxes.append(input);
+}
+
 window.onload = () => {
     showFoods();
     document.getElementById("add-edit-food-form").onsubmit = addEditFood;
@@ -99,4 +142,6 @@ window.onload = () => {
     document.querySelector(".close").onclick = () => {
         document.querySelector(".dialog").classList.add("transparents");
     }
+
+    document.getElementById("add-condiment").onclick = addCondiment;
 }
